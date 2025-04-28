@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu - The Lucky Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        .item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .item-details {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .controls button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .cart {
+            margin-top: 20px;
+        }
+        #commander {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #choixCommande {
+            display: none;
+            margin-top: 20px;
+        }
+        #choixCommande button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Menu</h1>
+
+<div class="item" onclick="toggleDetails(this)">
+    Frites
+    <div class="item-details">Délicieuses frites croustillantes.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Frites')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Pâtes
+    <div class="item-details">Pâtes fraîches préparées maison.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Pâtes')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Pommes de Terre
+    <div class="item-details">Pommes de terre fondantes et dorées.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Pommes de Terre')">🛒</button>
+    </div>
+</div>
+
+<!-- Accompagnements -->
+<h2>Accompagnements</h2>
+
+<div class="item" onclick="toggleDetails(this)">
+    Viande
+    <div class="item-details">Viande tendre et savoureuse.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Viande')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Poulet
+    <div class="item-details">Poulet grillé aux épices.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Poulet')">🛒</button>
+    </div>
+</div>
+
+<!-- Menus Kids -->
+<h2>Menus Kids</h2>
+
+<div class="item" onclick="toggleDetails(this)">
+    Menu A
+    <div class="item-details">Petite portion pour les enfants.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Menu A')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Menu B
+    <div class="item-details">Menu équilibré pour les enfants.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Menu B')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Menu C
+    <div class="item-details">Repas savoureux pour enfants.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Menu C')">🛒</button>
+    </div>
+</div>
+
+<!-- Desserts -->
+<h2>Desserts</h2>
+
+<div class="item" onclick="toggleDetails(this)">
+    Crème Brûlée
+    <div class="item-details">Délicieuse crème caramélisée.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Crème Brûlée')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Tiramisu
+    <div class="item-details">Tiramisu italien traditionnel.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Tiramisu')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Brownie
+    <div class="item-details">Brownie au chocolat fondant.</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Brownie')">🛒</button>
+    </div>
+</div>
+
+<div class="item" onclick="toggleDetails(this)">
+    Gâteau♾️ Mystère
+    <div class="item-details">Une surprise gourmande !</div>
+    <div class="controls">
+        <button onclick="changeQty(event, this, 1)">+</button>
+        <span>0</span>
+        <button onclick="changeQty(event, this, -1)">-</button>
+        <button onclick="addToCart(event, 'Gâteau Mystère')">🛒</button>
+    </div>
+</div>
+
+<button id="commander" onclick="showChoixCommande()">Commander</button>
+
+<div id="choixCommande">
+    <button>Click and Collect</button>
+    <button>Commander sur place</button>
+    <button>Livraison</button>
+</div>
+
+<script>
+    function toggleDetails(el) {
+        const details = el.querySelector(".item-details");
+        if (details.style.display === "block") {
+            details.style.display = "none";
+        } else {
+            details.style.display = "block";
+        }
+    }
+
+    function changeQty(event, button, change) {
+        event.stopPropagation();
+        const span = button.parentElement.querySelector("span");
+        let qty = parseInt(span.innerText);
+        qty += change;
+        if (qty < 0) qty = 0;
+        if (qty > 5) qty = 5;
+        span.innerText = qty;
+    }
+
+    function addToCart(event, itemName) {
+        event.stopPropagation();
+        alert(itemName + " ajouté au panier !");
+    }
+
+    function showChoixCommande() {
+        const choix = document.getElementById('choixCommande');
+        choix.style.display = 'block';
+    }
+</script>
+
+</body>
+                 </html>
