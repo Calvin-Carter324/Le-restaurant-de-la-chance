@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu - The Lucky Restaurant</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h2 { color: #333; }
+    .section { margin-bottom: 30px; }
+    .item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .qty-controls button { margin: 0 5px; }
+    .buttons { margin: 20px 0; }
+    .info { margin-top: 20px; font-weight: bold; color: #006600; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Menu - The Lucky Restaurant</h1>
+
+  <div class="section">
+    <h2>Plats</h2>
+    <div class="item">Frites - 3€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Pâtes - 5€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Pommes de terre - 4€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+  </div>
+
+  <div class="section">
+    <h2>Accompagnements</h2>
+    <div class="item">Viande - 6€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Poulet - 5€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+  </div>
+
+  <div class="section">
+    <h2>Menus Kids</h2>
+    <div class="item">Menu A - 6€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Menu B - 6€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Menu C - 6€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+  </div>
+
+  <div class="section">
+    <h2>Desserts</h2>
+    <div class="item">Crème Brûlée - 3€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Tiramisu - 3€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Brownie - 3€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+    <div class="item">Gâteau♾️ Mystère - 5€ <span class="qty-controls"><button onclick="changeQty(this, -1)">-</button><span>0</span><button onclick="changeQty(this, 1)">+</button></span></div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="showInfo('surplace')">Sur place</button>
+    <button onclick="showInfo('emporter')">À emporter</button>
+    <button onclick="showInfo('collecte')">Click and Collect</button>
+    <button onclick="showInfo('livraison')">Livraison</button>
+  </div>
+
+  <div class="info hidden" id="info-surplace">Veuillez récupérer votre repas dans le restaurant.</div>
+  <div class="info hidden" id="info-emporter">Votre commande sera prête à emporter bientôt !</div>
+  <div class="info hidden" id="info-collecte">Voici tous les lieux de collecte disponibles : [lieux à afficher].</div>
+  <div class="info hidden" id="info-livraison">Deux chats apparaissent : un pour l’adresse, un pour le code bancaire. (À illustrer)</div>
+
+  <script>
+    function changeQty(button, delta) {
+      const span = button.parentElement.querySelector('span');
+      let qty = parseInt(span.textContent);
+      qty = Math.max(0, qty + delta);
+      span.textContent = qty;
+    }
+
+    function showInfo(type) {
+      document.querySelectorAll('.info').forEach(div => div.classList.add('hidden'));
+      document.getElementById('info-' + type).classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
