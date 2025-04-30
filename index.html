@@ -1,146 +1,128 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Le Restaurant de la Chance</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .meal {
-            background: #fff;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 10px #ccc;
-            display: inline-block;
-            width: 250px;
-        }
-        button {
-            margin: 5px;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        .cart {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        .commande {
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Menu - The Lucky Restaurant</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f1f1f1; margin: 0; padding: 20px; text-align: center; }
+    h1 { margin-bottom: 30px; }
+    .menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
+    }
+    .card .price {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .buttons button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .total {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+    .commander {
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Bienvenue au Restaurant de la Chance</h1>
+  <h1>Bienvenue au Restaurant de la Chance</h1>
 
-    <div id="menu">
-        <div class="meal">
-            <h3>Pizza Trèfle</h3>
-            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" width="100" alt="Pizza Trèfle">
-            <p>Prix : 12€</p>
-            <button onclick="changeQuantity('pizza', 1)">+</button>
-            <span id="pizza-qty">0</span>
-            <button onclick="changeQuantity('pizza', -1)">-</button>
-            <p id="pizza-info" style="display:none;">Pizza porte-bonheur au fromage et basilic.</p>
-            <button onclick="showInfo('pizza-info')">Infos</button>
+  <div class="menu-grid" id="menu">
+    <!-- Les éléments seront générés par JavaScript -->
+  </div>
+
+  <div class="total">
+    Articles dans le panier : <span id="panier">0</span>
+  </div>
+  <button class="commander">Commander</button>
+
+  <script>
+    const menuItems = [
+      { nom: "Frites", prix: 3 },
+      { nom: "Pâtes", prix: 5 },
+      { nom: "Pommes de terre", prix: 4 },
+      { nom: "Viande", prix: 6 },
+      { nom: "Poulet", prix: 5 },
+      { nom: "Menu A", prix: 6 },
+      { nom: "Menu B", prix: 6 },
+      { nom: "Menu C", prix: 6 },
+      { nom: "Crème Brûlée", prix: 3 },
+      { nom: "Tiramisu", prix: 3 },
+      { nom: "Brownie", prix: 3 },
+      { nom: "Gâteau♾️ Mystère", prix: 5 },
+    ];
+
+    const panierTotal = document.getElementById("panier");
+    let totalArticles = 0;
+
+    const menuDiv = document.getElementById("menu");
+
+    menuItems.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <h3>${item.nom}</h3>
+        <img src="https://img.icons8.com/emoji/96/hamburger-emoji.png" alt="${item.nom}">
+        <div class="price">Prix : ${item.prix}€</div>
+        <div class="buttons">
+          <button onclick="changerQuantité(this, 1)">+</button>
+          <span>0</span>
+          <button onclick="changerQuantité(this, -1)">-</button>
         </div>
+        <button onclick="alert('Informations sur ${item.nom}')">Infos</button>
+      `;
 
-        <div class="meal">
-            <h3>Burger Chanceux</h3>
-            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" width="100" alt="Burger Chanceux">
-            <p>Prix : 10€</p>
-            <button onclick="changeQuantity('burger', 1)">+</button>
-            <span id="burger-qty">0</span>
-            <button onclick="changeQuantity('burger', -1)">-</button>
-            <p id="burger-info" style="display:none;">Burger spécial avec sauce secrète de la chance.</p>
-            <button onclick="showInfo('burger-info')">Infos</button>
-        </div>
+      menuDiv.appendChild(card);
+    });
 
-        <div class="meal">
-            <h3>Salade du Trésor</h3>
-            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" width="100" alt="Salade du Trésor">
-            <p>Prix : 8€</p>
-            <button onclick="changeQuantity('salade', 1)">+</button>
-            <span id="salade-qty">0</span>
-            <button onclick="changeQuantity('salade', -1)">-</button>
-            <p id="salade-info" style="display:none;">Salade fraîche aux pépites de chance.</p>
-            <button onclick="showInfo('salade-info')">Infos</button>
-        </div>
-    </div>
-
-    <div class="cart">
-        <p>Articles dans le panier : <span id="cart-count">0</span></p>
-    </div>
-
-    <div class="commande">
-        <button onclick="commander()">Commander</button>
-    </div>
-
-    <div id="commande-choix" style="margin-top: 20px;"></div>
-
-    <script>
-        let cart = 0;
-
-        function changeQuantity(item, number) {
-            let qty = document.getElementById(item + '-qty');
-            let count = parseInt(qty.innerText) + number;
-            if (count >= 0 && count <= 5) {
-                qty.innerText = count;
-                updateCart();
-            }
-        }
-
-        function updateCart() {
-            let total = 
-                parseInt(document.getElementById('pizza-qty').innerText) +
-                parseInt(document.getElementById('burger-qty').innerText) +
-                parseInt(document.getElementById('salade-qty').innerText);
-            document.getElementById('cart-count').innerText = total;
-        }
-
-        function showInfo(id) {
-            let info = document.getElementById(id);
-            if (info.style.display === "none") {
-                info.style.display = "block";
-            } else {
-                info.style.display = "none";
-            }
-        }
-
-        function commander() {
-            let choix = `
-                <h3>Comment souhaitez-vous commander ?</h3>
-                <button onclick="choisir('click')">Click and Collect</button>
-                <button onclick="choisir('surplace')">Commander sur place</button>
-                <button onclick="choisir('livraison')">Livraison</button>
-            `;
-            document.getElementById('commande-choix').innerHTML = choix;
-        }
-
-        function choisir(methode) {
-            if (methode === 'click') {
-                document.getElementById('commande-choix').innerHTML = 
-                    '<h3>Merci !</h3><p>Votre commande sera prête bientôt. Veuillez venir la récupérer au restaurant.</p>';
-            } else if (methode === 'surplace') {
-                document.getElementById('commande-choix').innerHTML = 
-                    '<h3>Super !</h3><p>Veuillez venir commander directement sur place !</p>';
-            } else if (methode === 'livraison') {
-                document.getElementById('commande-choix').innerHTML = 
-                    '<h3>Livraison</h3><p>Veuillez entrer votre adresse et vos informations bancaires.</p>';
-            } else {
-                document.getElementById('commande-choix').innerHTML = 
-                    '<h3>Erreur 404</h3><p>Une erreur est survenue... <span style="font-size:30px;">😢</span></p>';
-            }
-        }
-    </script>
+    function changerQuantité(button, delta) {
+      const span = button.parentElement.querySelector("span");
+      let qty = parseInt(span.textContent);
+      qty = Math.max(0, qty + delta);
+      totalArticles += delta;
+      if (totalArticles < 0) totalArticles = 0;
+      span.textContent = qty;
+      panierTotal.textContent = totalArticles;
+    }
+  </script>
 
 </body>
 </html>
