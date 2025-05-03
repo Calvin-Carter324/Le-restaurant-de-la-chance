@@ -4,125 +4,87 @@
   <meta charset="UTF-8">
   <title>Menu - The Lucky Restaurant</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f1f1f1; margin: 0; padding: 20px; text-align: center; }
-    h1 { margin-bottom: 30px; }
-    .menu-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf0;
+      color: #333;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
     }
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      width: 200px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 40px;
     }
-    .card img {
-      width: 80px;
-      height: 80px;
+    h2 {
+      color: #2980b9;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+      margin-top: 40px;
     }
-    .card h3 {
-      margin: 10px 0 5px;
+    .item {
+      margin-bottom: 15px;
     }
-    .card .price {
+    .item strong {
+      display: block;
       font-weight: bold;
-      margin-bottom: 10px;
     }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 10px 0;
+    .price {
+      float: right;
+      color: #2c3e50;
+      font-weight: bold;
     }
-    .buttons button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
+    .description {
+      font-style: italic;
+      color: #555;
+      margin-top: 2px;
     }
-    .total {
-      margin-top: 30px;
-      font-size: 18px;
+    .signature {
+      color: #c0392b;
+      font-weight: bold;
     }
-    .commander {
-      margin-top: 10px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
+    .clear {
+      clear: both;
     }
   </style>
 </head>
 <body>
+  <h1>Menu - The Lucky Restaurant</h1>
 
-  <h1>Bienvenue au Restaurant de la Chance</h1>
+  <h2>Entrées</h2>
+  <div class="item"><strong>Gaspacho de tomates, burratina <span class="price">17 EUR</span></strong><div class="description">chorizo ibérique, pêche rôtie</div></div>
+  <div class="item"><strong>Entrée du jour <span class="price">17 EUR</span></strong></div>
+  <div class="item"><strong>Ceviche, mangue, coriandre, avocat <span class="price">17 EUR</span></strong><div class="description">vinaigrette exotique</div></div>
+  <div class="item"><strong>Foie gras rhum vanille (sup 5EUR menu) <span class="price">22 EUR</span></strong><div class="description">pain d'épices et balsamique</div></div>
+  <div class="item"><strong>Gambas flambées au cognac (sup 5EUR menu) <span class="price">22 EUR</span></strong><div class="description">crème de maïs à la sauge</div></div>
+  <div class="item"><strong>Gravlax de saumon à la betterave <span class="price">17 EUR</span></strong><div class="description">crème citron et aneth</div></div>
 
-  <div class="menu-grid" id="menu">
-    <!-- Les éléments seront générés par JavaScript -->
-  </div>
+  <h2>Salades</h2>
+  <div class="item"><strong>Détox (entrée 17.00EUR, plat 30.00EUR)</strong><div class="description">quinoa, avocat, chou chinois, grenade, ciboulette, pomme granny, citron, noisettes</div></div>
+  <div class="item"><strong>Salade de crabe (entrée 17.00EUR, plat 30.00EUR)</strong><div class="description">avocat, sucrine, noisettes, vinaigrette citron</div></div>
+  <div class="item"><strong>Salade Sésame (petite 17EUR, grande 30EUR)</strong><div class="description">romaine, choux chinois, poulet croustillant, parmesan, anchois</div></div>
 
-  <div class="total">
-    Articles dans le panier : <span id="panier">0</span>
-  </div>
-  <button class="commander">Commander</button>
+  <h2>Plats</h2>
+  <div class="item"><strong>Poisson/plat du jour <span class="price">32 EUR</span></strong></div>
+  <div class="item"><strong>Saumon à l'oseille, poivre Timut <span class="price">32 EUR</span></strong><div class="description">tombée de poireaux à la citronnelle</div></div>
+  <div class="item"><strong>Tartare de boeuf au couteau à l'Italienne <span class="price">32 EUR</span></strong><div class="description">frites maison</div></div>
+  <div class="item"><strong>Tataki de thon rouge pané aux graines de sésame <span class="price">32 EUR</span></strong><div class="description">caponata d'aubergine</div></div>
+  <div class="item"><strong>Onglet de boeuf façon tigre qui pleure <span class="price">32 EUR</span></strong><div class="description">riz sauté, coriandre, et cacahuètes torréfiées</div></div>
+  <div class="item"><strong>Orecchiette à la crème de truffe, oeuf parfait <span class="price">32 EUR</span></strong><div class="description">parmesan, roquette, jambon à la truffe (option végétarienne sans jambon)</div></div>
+  <div class="item"><strong>Poulet Basquaise, riz pilaf au paprika fumé (sup 2EUR menu) <span class="price">34 EUR</span></strong></div>
+  <div class="item signature"><strong>Plat signature L'Héritage 105 — Navarin d'agneau aux légumes de saison (sup 4EUR menu) <span class="price">36 EUR</span></strong></div>
+  <div class="item signature"><strong>Plat signature L'Héritage 105 — Côte de veau, sauce morille (sup 6EUR menu) <span class="price">38 EUR</span></strong><div class="description">purée de pommes de terre maison</div></div>
+  <div class="item"><strong>Entrecôte, sauce au poivre ou roquefort (sup 12EUR menu) <span class="price">44 EUR</span></strong><div class="description">frites maison</div></div>
 
-  <script>
-    const menuItems = [
-      { nom: "Frites", prix: 3 },
-      { nom: "Pâtes", prix: 5 },
-      { nom: "Pommes de terre", prix: 4 },
-      { nom: "Viande", prix: 6 },
-      { nom: "Poulet", prix: 5 },
-      { nom: "Menu A", prix: 6 },
-      { nom: "Menu B", prix: 6 },
-      { nom: "Menu C", prix: 6 },
-      { nom: "Crème Brûlée", prix: 3 },
-      { nom: "Tiramisu", prix: 3 },
-      { nom: "Brownie", prix: 3 },
-      { nom: "Gâteau♾️ Mystère", prix: 5 },
-    ];
-
-    const panierTotal = document.getElementById("panier");
-    let totalArticles = 0;
-
-    const menuDiv = document.getElementById("menu");
-
-    menuItems.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <h3>${item.nom}</h3>
-        <img src="https://img.icons8.com/emoji/96/hamburger-emoji.png" alt="${item.nom}">
-        <div class="price">Prix : ${item.prix}€</div>
-        <div class="buttons">
-          <button onclick="changerQuantité(this, 1)">+</button>
-          <span>0</span>
-          <button onclick="changerQuantité(this, -1)">-</button>
-        </div>
-        <button onclick="alert('Informations sur ${item.nom}')">Infos</button>
-      `;
-
-      menuDiv.appendChild(card);
-    });
-
-    function changerQuantité(button, delta) {
-      const span = button.parentElement.querySelector("span");
-      let qty = parseInt(span.textContent);
-      qty = Math.max(0, qty + delta);
-      totalArticles += delta;
-      if (totalArticles < 0) totalArticles = 0;
-      span.textContent = qty;
-      panierTotal.textContent = totalArticles;
-    }
-  </script>
+  <h2>Desserts</h2>
+  <div class="item"><strong>Café ou thé gourmand <span class="price">15 EUR</span></strong></div>
+  <div class="item"><strong>Salade de fruits frais, pastèque, verveine <span class="price">15 EUR</span></strong></div>
+  <div class="item"><strong>Tiramisu café et amaretto <span class="price">15 EUR</span></strong></div>
+  <div class="item"><strong>Moelleux au chocolat <span class="price">15 EUR</span></strong><div class="description">crème anglaise à la vanille grillée</div></div>
+  <div class="item"><strong>Brioche perdue, caramel mangue passion <span class="price">15 EUR</span></strong><div class="description">glace vanille bourbon</div></div>
+  <div class="item"><strong>Crème brulée à la vanille et fève de tonka <span class="price">15 EUR</span></strong></div>
 
 </body>
-</html>
+                                                                                         </html>
+                                                               
